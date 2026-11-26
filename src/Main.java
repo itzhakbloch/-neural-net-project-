@@ -11,8 +11,16 @@ public class Main {
 
         NeuralNetwork test = new NeuralNetwork(2, 4, 1);
         double[] a = { 0.5, 0.6 };
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         double[] out = test.predict(a);
         printArray(out);
     }
+=======
+     
+>>>>>>> Stashed changes
+=======
+     
+>>>>>>> Stashed changes
 
 }
