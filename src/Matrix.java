@@ -116,4 +116,41 @@ public class Matrix {
         }
     }
 
+    public static Matrix transpose(Matrix m) {
+        if (m == null) {
+            throw new IllegalArgumentException("Error: null.");
+        }
+        Matrix result = new Matrix(m.cols, m.rows);
+        for (int i = 0; i < m.cols; i++) {
+            for (int j = 0; j < m.rows; j++) {
+                result.data[i][j] = m.data[j][i];
+            }
+        }
+        return result;
+    }
+
+    public void applyFunction(DoubleUnaryOperator func) {
+        if (func == null) {
+            throw new IllegalArgumentException("Error: null");
+        }
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                this.data[i][j] = func.applyAsDouble(this.data[i][j]);
+            }
+        }
+    }
+
+    public static Matrix mapToNew(Matrix m, DoubleUnaryOperator func) {
+        if (m == null || func == null) {
+            throw new IllegalArgumentException("Error: null.");
+        }
+        Matrix result = new Matrix(m.rows, m.cols);
+        for (int i = 0; i < m.rows; i++) {
+            for (int j = 0; j < m.cols; j++) {
+                result.data[i][j] = func.applyAsDouble(m.data[i][j]);
+            }
+        }
+        return result;
+    }
+
 }
